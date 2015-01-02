@@ -50,6 +50,9 @@ public class Permissions {
 			case 1050:
 				new Permissions(plugin).setHeadAdministrator(player);
 				break;
+			default:
+				new Permissions(plugin).setGuest(player);
+				break;
 			}
 		}
 		
