@@ -2,7 +2,6 @@ package tk.holacraft.handlers;
 
 import tk.holacraft.Main;
 
-
 public class Chat {
 
 	///// Class Variables
@@ -10,4 +9,6 @@ public class Chat {
 	public Chat(Main plugin) {
 		this.plugin = plugin;
 	}
+	
+
 }

@@ -50,6 +50,16 @@ public class Hola implements CommandExecutor {
 						player.sendMessage(ChatColor.GOLD + " /setemail <your_email>" + ChatColor.GRAY + " - Set account email.");
 						player.sendMessage(ChatColor.GOLD + " /stats" + ChatColor.GRAY + " - Display account stats.");
 						break;
+					// AFK Command
+					case "afk":
+						if(player.hasMetadata("afk")) {
+							player.setMetadata("afk", new FixedMetadataValue(plugin, 0));
+							player.sendMessage(GlobalData.styleChatServer + ChatColor.GRAY + "You are no-longer AFK.");
+						} else {
+							player.setMetadata("afk", new FixedMetadataValue(plugin, 1));
+							player.sendMessage(GlobalData.styleChatServer + ChatColor.GRAY + "You are now AFK.");
+						}
+						break;
 					// TimeSync Command	
 					case "timesync":
 						if (args.length == 2) {
