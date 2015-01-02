@@ -25,6 +25,9 @@ public class Money implements CommandExecutor {
 				case "help":
 					player.sendMessage(GlobalData.styleChatServer + "This is the /money help command.");
 					break;
+				case "balance":
+					player.sendMessage(GlobalData.styleChatServer + ChatColor.GREEN + "Your balance is: " + player.getMetadata("money").get(0).asInt());
+					break;
 				default:
 					player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Invalid argument. Use /money help for more information.");
 					break;
