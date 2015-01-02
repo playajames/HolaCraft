@@ -53,7 +53,7 @@ public class Hola implements CommandExecutor {
 					// AFK Command
 					case "afk":
 						if(player.hasMetadata("afk")) {
-							player.setMetadata("afk", new FixedMetadataValue(plugin, 0));
+							player.removeMetadata("afk", plugin);
 							player.sendMessage(GlobalData.styleChatServer + ChatColor.GRAY + "You are no-longer AFK.");
 						} else {
 							player.setMetadata("afk", new FixedMetadataValue(plugin, 1));
