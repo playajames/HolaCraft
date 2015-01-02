@@ -33,7 +33,7 @@ public class PlayerPlaceBlock implements Listener {
 		//ItemStack item = event.getItemInHand();
 		
 		if (player.getInventory().contains(Items.ProtectGem)) {
-			player.sendMessage("Placed protected block.");
+			player.sendMessage(GlobalData.styleChatServer + "Placed protected block.");
 			new BlockProtect(plugin).setProtected(player, block);
 		}
 		

@@ -24,7 +24,7 @@ public class Scoreboard {
 	public void updateScoreboard(Player player) {
 		Objective title = board.registerNewObjective("title", "dummy");
 		title.setDisplaySlot(DisplaySlot.SIDEBAR);
-		title.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Stats");
+		title.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "HolaCraft");
 		
 		Score money = title.getScore("Balance:");
 		money.setScore(player.getMetadata("money").get(0).asInt());
@@ -34,6 +34,14 @@ public class Scoreboard {
 		
 		Score infractions = title.getScore("Infractions:");
 		infractions.setScore(player.getMetadata("infractions").get(0).asInt());
+		
+		Score players = title.getScore("Online:");
+		int online = 0;
+		for(Player players2 : Bukkit.getOnlinePlayers()) {
+			online = online + 1;
+		}
+		players.setScore(online);
+		
 		
 		player.setScoreboard(board);
 	}
