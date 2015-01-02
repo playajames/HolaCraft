@@ -27,14 +27,11 @@ public class AsyncPlayerChat implements Listener{
     		event.setCancelled(true);
     		player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You dont have permission to do that.");
     	}
-    }
-    
-    public void onChat2(AsyncPlayerChatEvent event) {
-    	Player player = event.getPlayer();
+    	
     	if (player.hasMetadata("afk")) {
     		player.removeMetadata("afk", plugin);
     		player.sendMessage(GlobalData.styleChatServer + ChatColor.GRAY + "You are no longer AFK.");
     	}
     }
-	
+   
 }
