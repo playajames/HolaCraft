@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="bukkit-1.7.10-R0.1-20140817.175650-8.jar"/>
+	<classpathentry kind="lib" path="mysql-connector-java-5.1.32-bin.jar"/>
+	<classpathentry kind="lib" path="citizensapi-2.0.13-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="worldguard-6.0.0-beta-02.jar"/>
+	<classpathentry kind="lib" path="WorldEdit.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

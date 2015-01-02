@@ -1,0 +1,14 @@
+name: HolaCraft
+main: tk.holacraft.Main
+version: 0.2.1
+author: playajames
+
+commands:
+  hola:
+    description: HolaCraft main control command.
+  spawn:
+    desctiption: Teleports player to spawn location.
+  warp:
+    desctiption: Teleports player to specified warp location.
+  money:
+    description: Allows players to control their money.

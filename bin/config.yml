@@ -1,0 +1,18 @@
+# Default Properties Configuration File
+
+MySQL:
+  enabled: true
+  Host: localhost
+  Port: 3306
+  Username: root
+  Password: ''
+  Database: hola_server
+Spawn:
+  World: null
+  X: 0
+  Y: 0
+  Z: 0
+  Pitch: 0
+  Yaw: 0
+Logger: true
+Time_Sync: true
