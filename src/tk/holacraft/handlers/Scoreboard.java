@@ -27,7 +27,7 @@ public class Scoreboard {
 		title.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Stats");
 		
 		Score money = title.getScore("Money:");
-		money.setScore(player.getMetadata("money").get(0).asInt());
+		money.setScore(player.getMetadata("Balance").get(0).asInt());
 		
 //		Score points = title.getScore(ChatColor.ITALIC + "Points:");
 //		points.setScore(player.getMetadata("points").get(0).asInt());
