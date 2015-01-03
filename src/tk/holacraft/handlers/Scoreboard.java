@@ -8,6 +8,7 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.ScoreboardManager;
 
+import tk.holacraft.GlobalData;
 import tk.holacraft.Main;
 
 public class Scoreboard {
@@ -36,11 +37,8 @@ public class Scoreboard {
 		infractions.setScore(player.getMetadata("infractions").get(0).asInt());
 		
 		Score players = title.getScore("Online:");
-		int online = 0;
-		for(Player players2 : Bukkit.getOnlinePlayers()) {
-			online = online + 1;
-		}
-		players.setScore(online);
+		
+		players.setScore(GlobalData.playersOnline.size());
 		
 		
 		player.setScoreboard(board);
