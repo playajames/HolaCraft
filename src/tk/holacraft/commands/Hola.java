@@ -1,9 +1,9 @@
 package tk.holacraft.commands;
 
 import java.sql.SQLException;
-import java.util.Date;
 
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,7 +14,6 @@ import tk.holacraft.GlobalData;
 import tk.holacraft.Main;
 import tk.holacraft.handlers.Permissions;
 import tk.holacraft.handlers.PlayerData;
-import tk.holacraft.handlers.items.Items;
 
 public class Hola implements CommandExecutor {
 
@@ -31,18 +30,32 @@ public class Hola implements CommandExecutor {
 			if (player.hasPermission("holacraft.command.hola")) {
 				if (args.length > 0) {
 					switch (args[0]) {
-					// Test1 Command	
-					case "test1":
-						long timeNow = new Date().getTime();
-						long storedTime = player.getMetadata("stored_time").get(0).asLong();
-						long miliseconds = timeNow - storedTime;
-						long seconds = miliseconds / 1000;
-						player.sendMessage(Long.toString(seconds));
+					// Help Command	
+					case "creative":
+						if(player.getGameMode().equals(GameMode.CREATIVE)) {
+							player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You are already in creative mode.");
+						} else {
+							player.sendMessage(GlobalData.styleChatServer + ChatColor.GREEN + "Gamemode switched to creative.");
+							player.setGameMode(GameMode.CREATIVE);
+						}
 						break;
-					// Test Command	
-					case "test":
-						player.getInventory().addItem(Items.ProtectGem);
-						player.sendMessage("Test command complete!");
+					// Help Command	
+					case "adventure":
+						if(player.getGameMode().equals(GameMode.ADVENTURE)) {
+							player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You are already in adventure mode.");
+						} else {
+							player.sendMessage(GlobalData.styleChatServer + ChatColor.GREEN + "Gamemode switched to adventure.");
+							player.setGameMode(GameMode.ADVENTURE);
+						}
+						break;
+					// Help Command	
+					case "survival":
+						if(player.getGameMode().equals(GameMode.SURVIVAL)) {
+							player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You are already in survival mode.");
+						} else {
+							player.sendMessage(GlobalData.styleChatServer + ChatColor.GREEN + "Gamemode switched to survival.");
+							player.setGameMode(GameMode.SURVIVAL);
+						}
 						break;
 					// Help Command	
 					case "help":
