@@ -30,7 +30,7 @@ public class Hola implements CommandExecutor {
 			if (player.hasPermission("holacraft.command.hola")) {
 				if (args.length > 0) {
 					switch (args[0]) {
-					// Help Command	
+					// creative Command	
 					case "creative":
 						if(player.getGameMode().equals(GameMode.CREATIVE)) {
 							player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You are already in creative mode.");
@@ -39,7 +39,12 @@ public class Hola implements CommandExecutor {
 							player.setGameMode(GameMode.CREATIVE);
 						}
 						break;
-					// Help Command	
+					// Clear Inventory
+					case "ci":
+						player.sendMessage(GlobalData.styleChatServer + ChatColor.GREEN + "Inventory cleared.");
+						player.getInventory().clear();
+						break;
+					// adventure Command	
 					case "adventure":
 						if(player.getGameMode().equals(GameMode.ADVENTURE)) {
 							player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You are already in adventure mode.");
@@ -48,7 +53,7 @@ public class Hola implements CommandExecutor {
 							player.setGameMode(GameMode.ADVENTURE);
 						}
 						break;
-					// Help Command	
+					// survival Command	
 					case "survival":
 						if(player.getGameMode().equals(GameMode.SURVIVAL)) {
 							player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You are already in survival mode.");
