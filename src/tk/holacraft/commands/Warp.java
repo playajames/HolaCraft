@@ -140,18 +140,23 @@ public class Warp implements CommandExecutor {
 								int x = player.getLocation().getBlockX();
 						        int y = player.getLocation().getBlockY();
 						        int z = player.getLocation().getBlockZ();
-								player.sendMessage(GlobalData.styleChatServer + "Teleporting you to " + args[0].toLowerCase() + ", dont move for 5 seconds.");
-								scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
-						            @Override
-						            public void run() {
-						            	if (player.getLocation().getBlockX() == x && player.getLocation().getBlockY() == y && player.getLocation().getBlockZ() == z) {
-						            		player.teleport(warps.get(args[0]));
-											player.sendMessage(GlobalData.styleChatServer + "You have been teleported to " + args[0].toLowerCase() + ".");
-						            	} else {
-						            		player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Teleport canceled, you seemed to have moved locations.");
-						            	}
-						            }
-						        }, 100L);
+								if(player.hasPermission("holacraft.command.warp.override")) {
+									player.sendMessage(GlobalData.styleChatServer + "Teleporting you to " + args[0].toLowerCase() + ".");
+							        player.teleport(warps.get(args[0]));
+								} else {
+									player.sendMessage(GlobalData.styleChatServer + "Teleporting you to " + args[0].toLowerCase() + ", dont move for 5 seconds.");
+									scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
+							            @Override
+							            public void run() {
+							            	if (player.getLocation().getBlockX() == x && player.getLocation().getBlockY() == y && player.getLocation().getBlockZ() == z) {
+							            		player.teleport(warps.get(args[0]));
+												player.sendMessage(GlobalData.styleChatServer + "You have been teleported to " + args[0].toLowerCase() + ".");
+							            	} else {
+							            		player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Teleport canceled, you seemed to have moved locations.");
+							            	}
+							            }
+							        }, 100L);
+								}
 							} else {
 								player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Warp not found.");
 							}
