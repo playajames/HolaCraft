@@ -12,6 +12,7 @@ import tk.holacraft.Main;
 import tk.holacraft.handlers.npc.Druggie;
 import tk.holacraft.handlers.npc.FoodTrader;
 import tk.holacraft.handlers.npc.GeneralTrader;
+import tk.holacraft.handlers.npc.PotionTrader;
 import tk.holacraft.handlers.npc.SuppliesTrader;
 import tk.holacraft.handlers.npc.WeaponsTrader;
 
@@ -45,7 +46,7 @@ public class PlayerInteractEntity implements Listener {
 				}
 				
 				/////
-				if (npc.getDisplayName().contentEquals("Food Trader")) {
+				if (npc.getDisplayName().contentEquals("Meat Mike")) {
 					if (player.hasPermission("tds.npc.foodtrader")) {
 						new FoodTrader(plugin).openMenu(player);
 					} else {
@@ -54,9 +55,18 @@ public class PlayerInteractEntity implements Listener {
 				}
 				
 				/////
-				if (npc.getDisplayName().contentEquals("Supplies Trader")) {
+				if (npc.getDisplayName().contentEquals("Produce Pat")) {
 					if (player.hasPermission("tds.npc.suppliestrader")) {
 						new SuppliesTrader(plugin).openMenu(player);
+					} else {
+						player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Sorry but you don't have permission to access this trader.");
+					}
+				}
+				
+				/////
+				if (npc.getDisplayName().contentEquals("Potion Patricia")) {
+					if (player.hasPermission("tds.npc.potiontrader")) {
+						new PotionTrader(plugin).openMenu(player);
 					} else {
 						player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Sorry but you don't have permission to access this trader.");
 					}
@@ -64,7 +74,7 @@ public class PlayerInteractEntity implements Listener {
 
 				
 				/////
-				if (npc.getDisplayName().contentEquals("Weapons Trader")) {
+				if (npc.getDisplayName().contentEquals("Armor Amanda")) {
 					if (player.hasPermission("tds.npc.weaponstrader")) {
 						new WeaponsTrader(plugin).openMenu(player);
 					} else {

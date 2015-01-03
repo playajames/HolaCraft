@@ -156,6 +156,7 @@ public class Main extends JavaPlugin {
 			///// Register Custom Items
 			new Items(this).registerIncrediStick();
 			new Items(this).registerProtectGem();
+			new Items(this).registerStrenght();
 			
 			///// Start Schedulers
 			if (getConfig().getBoolean("Logger")) {

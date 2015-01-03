@@ -18,4 +18,5 @@ public class InventoryMenu {
 	public static Inventory generalTrader = Bukkit.createInventory(null, 9, "General Trader");
 	public static Inventory suppliesTrader = Bukkit.createInventory(null, 9, "Supplies Trader");
 	public static Inventory weaponsTrader = Bukkit.createInventory(null, 9, "Weapons Trader");
+	public static Inventory potionTrader = Bukkit.createInventory(null, 9, "Potion Trader");
 }

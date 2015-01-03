@@ -23,19 +23,28 @@ public class Items {
 	///// Items
 	public static ItemStack IncrediStick = new ItemStack(Material.STICK,1);
 	public static ItemStack ProtectGem = new ItemStack(Material.GLASS,1);
+	public static ItemStack Strenght = new ItemStack(Material.POTION,1);
 	
 	// Food Items
 
 	///// Register Item Methods
 	public void registerIncrediStick() {
     	List<String> lore = new ArrayList<String>();
-    	lore.add("§4Incredi Rares");
+    	lore.add("ï¿½4Incredi Rares");
 		ItemMeta incrediStickMeta = IncrediStick.getItemMeta();
 		incrediStickMeta.setDisplayName("Incredi Stick");
 		incrediStickMeta.setLore(lore);
 		incrediStickMeta.addEnchant(Enchantment.KNOCKBACK, 5, true);
 		incrediStickMeta.addEnchant(Enchantment.FIRE_ASPECT, 4, true);
 		IncrediStick.setItemMeta(incrediStickMeta);
+	}
+	public void registerStrenght() {
+    	List<String> lore = new ArrayList<String>();
+    	lore.add(ChatColor.GREEN + "Strenght potion");
+		ItemMeta pot = Strenght.getItemMeta();
+		pot.setDisplayName(ChatColor.GREEN + "Strenght");
+		pot.setLore(lore);
+		Strenght.setItemMeta(pot);
 	}
 	public void registerProtectGem() {
     	List<String> lore = new ArrayList<String>();
