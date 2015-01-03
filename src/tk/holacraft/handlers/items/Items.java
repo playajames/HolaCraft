@@ -23,7 +23,7 @@ public class Items {
 	///// Items
 	public static ItemStack IncrediStick = new ItemStack(Material.STICK,1);
 	public static ItemStack ProtectGem = new ItemStack(Material.GLASS,1);
-	public static ItemStack Strenght = new ItemStack(Material.POTION,1);
+	public static ItemStack Strenght = new ItemStack(Material.POTION,1, (short) 8265);
 	
 	// Food Items
 
