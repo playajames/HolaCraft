@@ -13,7 +13,6 @@ import org.bukkit.metadata.FixedMetadataValue;
 
 import tk.holacraft.GlobalData;
 import tk.holacraft.Main;
-import tk.holacraft.handlers.Logger;
 import tk.holacraft.handlers.Permissions;
 import tk.holacraft.handlers.PlayerData;
 
