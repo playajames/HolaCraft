@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import tk.holacraft.commands.Hola;
+import tk.holacraft.commands.Home;
 import tk.holacraft.commands.Spawn;
 import tk.holacraft.commands.Warp;
 import tk.holacraft.handlers.BlockProtect;
@@ -125,6 +126,7 @@ public class Main extends JavaPlugin {
 			this.getCommand("hola").setExecutor(new Hola(this));
 			this.getCommand("spawn").setExecutor(new Spawn(this));
 			this.getCommand("warp").setExecutor(new Warp(this));
+			this.getCommand("home").setExecutor(new Home(this));
 
 			
 			///// Register Events
