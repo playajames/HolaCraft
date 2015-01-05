@@ -67,6 +67,19 @@ public class Hola implements CommandExecutor {
 						break;
 					// Warn command
 					case "warn":
+						if (args.length > 0) {
+							Player target = Bukkit.getPlayer(args[0]);
+								StringBuilder sb = new StringBuilder();
+								for (int i = 2; i < args.length; i++){
+								sb.append(args[i]).append(" ");
+								}
+								 
+								String reason = sb.toString().trim();
+								new Warn(plugin).warn(target, player, reason);
+							
+						} else {
+							player.sendMessage(GlobalData.styleChatServer + "Usage: /warn <player> <reason>");
+						}
 					// adventure Command	
 					case "adventure":
 						if(player.getGameMode().equals(GameMode.ADVENTURE)) {
