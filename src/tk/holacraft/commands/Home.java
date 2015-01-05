@@ -5,7 +5,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import tk.holacraft.GlobalData;
 import tk.holacraft.Main;
 
 public class Home implements CommandExecutor {
@@ -23,13 +22,12 @@ public class Home implements CommandExecutor {
 			if (player.hasPermission("holacraft.command.home")) {
 				if (args.length > 0) {
 					switch (args[0]) {
-					// creative Command	
+					// Set Command	
 					case "set":
 						if (player.getMetadata("homes").get(0).asInt() == 3) {
 							
 						}
 					break;
-					// Clear Inventory
 					}
 				}
 			}
