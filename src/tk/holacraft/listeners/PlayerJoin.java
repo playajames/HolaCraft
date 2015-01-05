@@ -25,7 +25,7 @@ public class PlayerJoin implements Listener {
 		Player player = event.getPlayer();
 		GlobalData.playersOnline.add(player);
 		new Logger(plugin).join(player);
-		new Scoreboard(plugin).updateScoreboard(player);
+		new Scoreboard(plugin).updateAll();
 		new Permissions(plugin).set(player);
 		
 		
