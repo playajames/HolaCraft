@@ -36,7 +36,7 @@ public class Scoreboard {
 		Score infractions = title.getScore("Infractions:");
 		infractions.setScore(player.getMetadata("infractions").get(0).asInt());
 		
-		Score players = title.getScore("Online:");
+		Score players = title.getScore("Players Online:");
 		
 		players.setScore(GlobalData.playersOnline.size());
 		

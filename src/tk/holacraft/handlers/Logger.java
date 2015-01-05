@@ -1,8 +1,8 @@
 package tk.holacraft.handlers;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,8 +32,8 @@ public class Logger {
 		String action = "join";
 		Date d = new Date();
 		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
-		String query = "INSERT INTO logger (`player_id`, `action`, `location_x`, `location_y`, `location_z`, `data`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + action + "', '" + player.getLocation().getBlockX() + "', '" + player.getLocation().getBlockY() + "', '" + player.getLocation().getBlockZ() + "', '" + player.getAddress() + "', '" + dateNow + "');";
-		cache.add(query);
+		String values = player.getMetadata("id").get(0).asInt() + "," + action + "," + player.getLocation().getBlockX() + "," + player.getLocation().getBlockY() + "," + player.getLocation().getBlockZ() + "," + player.getAddress() + "," + dateNow;
+		cache.add(values);
 	}
 	
 	public void warned(Player player, Player warner) {
@@ -49,8 +49,8 @@ public class Logger {
 		String action = "quit";
 		Date d = new Date();
 		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
-		String query = "INSERT INTO logger (`player_id`, `action`, `location_x`, `location_y`, `location_z`, `data`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + action + "', '" + player.getLocation().getBlockX() + "', '" + player.getLocation().getBlockY() + "', '" + player.getLocation().getBlockZ() + "', '" + player.getAddress() + "', '" + dateNow + "');";
-		cache.add(query);
+		String values = player.getMetadata("id").get(0).asInt() + "," + action + "," + player.getLocation().getBlockX() + "," + player.getLocation().getBlockY() + "," + player.getLocation().getBlockZ() + "," + player.getAddress() + "," + dateNow;
+		cache.add(values);
 	}
 	
 	///// Block Place Event
@@ -58,8 +58,8 @@ public class Logger {
 		String action = "blockPlace";
 		Date d = new Date();
 		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
-		String query = ("INSERT INTO logger (`player_id`, `action`, `location_x`, `location_y`, `location_z`, `data`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + action + "', '" + block.getLocation().getBlockX() + "', '" + block.getLocation().getBlockY() + "', '" + block.getLocation().getBlockZ() + "', '" + block.getType().toString() + "', '" + dateNow + "');");
-		cache.add(query);
+		String values = player.getMetadata("id").get(0).asInt() + "," + action + "," + block.getLocation().getBlockX() + "," + block.getLocation().getBlockY() + "," + block.getLocation().getBlockZ() + "," + block.getType().toString() + "," + dateNow;
+		cache.add(values);
 	}
 	
 	///// Block Break Event
@@ -67,8 +67,8 @@ public class Logger {
 		String action = "blockBreak";
 		Date d = new Date();
 		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
-		String query = ("INSERT INTO logger (`player_id`, `action`, `location_x`, `location_y`, `location_z`, `data`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + action + "', '" + block.getLocation().getBlockX() + "', '" + block.getLocation().getBlockY() + "', '" + block.getLocation().getBlockZ() + "', '" + block.getType().toString() + "', '" + dateNow + "');");
-		cache.add(query);
+		String values = player.getMetadata("id").get(0).asInt() + "," + action + "," + block.getLocation().getBlockX() + "," + block.getLocation().getBlockY() + "," + block.getLocation().getBlockZ() + "," + block.getType().toString() + "," + dateNow;
+		cache.add(values);
 	}
 	
 	///// Shop Buy Event
@@ -76,8 +76,8 @@ public class Logger {
 		String action = "shopBuy";
 		Date d = new Date();
 		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
-		String query = ("INSERT INTO logger (`player_id`, `action`, `location_x`, `location_y`, `location_z`, `data`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + action + "', '" + player.getLocation().getBlockX() + "', '" + player.getLocation().getBlockY() + "', '" + player.getLocation().getBlockZ() + "', '" + item + "," + shop + "', '" + dateNow + "');");
-		cache.add(query);
+		String values = player.getMetadata("id").get(0).asInt() + "," + action + "," + player.getLocation().getBlockX() + "," + player.getLocation().getBlockY() + "," + player.getLocation().getBlockZ() + "," + item + "," + shop + "," + dateNow;
+		cache.add(values);
 	}
 	
 	///// Shop Sell Event
@@ -85,8 +85,8 @@ public class Logger {
 		String action = "shopSell";
 		Date d = new Date();
 		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
-		String query = ("INSERT INTO logger (`player_id`, `action`, `location_x`, `location_y`, `location_z`, `data`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + action + "', '" + player.getLocation().getBlockX() + "', '" + player.getLocation().getBlockY() + "', '" + player.getLocation().getBlockZ() + "', '" + item + "," + shop + "', '" + dateNow + "');");
-		cache.add(query);
+		String values = player.getMetadata("id").get(0).asInt() + "," + action + "," + player.getLocation().getBlockX() + "," + player.getLocation().getBlockY() + "," + player.getLocation().getBlockZ() + "," + item + "," + shop + "," + dateNow;
+		cache.add(values);
 	}
 	
 	///// Consume Event
@@ -94,8 +94,8 @@ public class Logger {
 		String action = "consume";
 		Date d = new Date();
 		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
-		String query = ("INSERT INTO logger (`player_id`, `action`, `location_x`, `location_y`, `location_z`, `data`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + action + "', '" + player.getLocation().getBlockX() + "', '" + player.getLocation().getBlockY() + "', '" + player.getLocation().getBlockZ() + "', '" + item + "', '" + dateNow + "');");
-		cache.add(query);
+		String values = player.getMetadata("id").get(0).asInt() + "," + action + "," + player.getLocation().getBlockX() + "," + player.getLocation().getBlockY() + "," + player.getLocation().getBlockZ() + "," + item + "," + dateNow;
+		cache.add(values);
 	}
 	
 	///// Chat Event
@@ -103,8 +103,8 @@ public class Logger {
 		String action = "chat";
 		Date d = new Date();
 		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
-		String query = ("INSERT INTO logger (`player_id`, `action`, `location_x`, `location_y`, `location_z`, `data`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + action + "', '" + player.getLocation().getBlockX() + "', '" + player.getLocation().getBlockY() + "', '" + player.getLocation().getBlockZ() + "', '" + message + "', '" + dateNow + "');");
-		cache.add(query);
+		String values = player.getMetadata("id").get(0).asString() +","+ action +","+ player.getLocation().getBlockX() +","+ player.getLocation().getBlockY() +","+ player.getLocation().getBlockZ() +","+ message +","+ dateNow;
+		cache.add(values);
 	}
 	
 	///// Player Command Event
@@ -112,8 +112,8 @@ public class Logger {
 		String action = "command";
 		Date d = new Date();
 		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
-		String query = ("INSERT INTO logger (`player_id`, `action`, `location_x`, `location_y`, `location_z`, `data`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + action + "', '" + player.getLocation().getBlockX() + "', '" + player.getLocation().getBlockY() + "', '" + player.getLocation().getBlockZ() + "', '" + message + "', '" + dateNow + "');");
-		cache.add(query);
+		String values = player.getMetadata("id").get(0).asInt() + "," + action + "," + player.getLocation().getBlockX() + "," + player.getLocation().getBlockY() + "," + player.getLocation().getBlockZ() + "," + message + "," + dateNow;
+		cache.add(values);
 	}
 	
 	///// Kick Event
@@ -121,8 +121,8 @@ public class Logger {
 		String action = "kick";
 		Date d = new Date();
 		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
-		String query = ("INSERT INTO logger (`player_id`, `action`, `location_x`, `location_y`, `location_z`, `data`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + action + "', '" + player.getLocation().getBlockX() + "', '" + player.getLocation().getBlockY() + "', '" + player.getLocation().getBlockZ() + "', '" + reason + "', '" + dateNow + "');");
-		cache.add(query);
+		String values = player.getMetadata("id").get(0).asInt() + "," + action + "," + player.getLocation().getBlockX() + "," + player.getLocation().getBlockY() + "," + player.getLocation().getBlockZ() + "," + reason + "," + dateNow;
+		cache.add(values);
 	}
 
 	///// Store Logger Data
@@ -135,19 +135,38 @@ public class Logger {
 		try {
 			if (mysql.checkConnection() == true) {
 	        	if (cache.size() > 0) {
-		        	for (String query : cache) {
-		        		Statement s = c.createStatement();
-						s.executeUpdate(query);
-						s.close();
+		        	for (String values : cache) {
+		        		String[] parts = values.split(",");
+		        		String player_id = parts[0];
+		        		String action = parts[1];
+		        		String location_x = parts[2];
+		        		String location_y = parts[3];
+		        		String location_z = parts[4];
+		        		String data = parts[5];
+		        		String date = parts[6];
+		        		
+		        		PreparedStatement ps = c.prepareStatement("INSERT INTO logger (`player_id`, `action`, `location_x`, `location_y`, `location_z`, `data`, `date`) VALUES (?, ?, ?, ?, ?, ?, ?);");
+		        		ps.setString(1, player_id);
+		        		ps.setString(2, action);
+		        		ps.setString(3, location_x);
+		        		ps.setString(4, location_y);
+		        		ps.setString(5, location_z);
+		        		ps.setString(6, data);
+		        		ps.setString(7, date);
+		        		ps.executeUpdate();
+						ps.close();
 		    		}
 		        	cache.clear();
 		        	plugin.getLogger().info("Logger Scheduler: All logger data stored.");
 	        	} else {
 	        		plugin.getLogger().info("Logger Scheduler: No logger data to store, task canceled.");
 	        	}
+			} else {
+				plugin.getLogger().warning("Logger Scheduler: Error, could not connect to MySQL database..");
 			}
 		} catch (Exception e) {
-			plugin.getLogger().warning("Logger Scheduler: Error, could not connect to MySQL database..");
+			plugin.getLogger().warning("Logger Scheduler: Error, storing logger cache.");
+			plugin.getLogger().warning(e.getMessage());
 		}
 		try {
 			mysql.closeConnection();
