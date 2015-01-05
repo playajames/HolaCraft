@@ -67,6 +67,8 @@ public class Permissions {
 		GlobalData.permissions.put(player.getUniqueId(), player.addAttachment(plugin));
 		PermissionAttachment permissions = GlobalData.permissions.get(player.getUniqueId());
 		permissions.setPermission("holacraft.chat", true);
+		permissions.setPermission("bukkit.command.plugins", false);
+		permissions.setPermission("bukkit.command.me", false);
 	}
 	
 	///// Survivor Permissions
