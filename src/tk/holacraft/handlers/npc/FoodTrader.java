@@ -4,7 +4,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import tk.holacraft.GlobalData;
@@ -25,10 +24,10 @@ public class FoodTrader {
 	}
 
 	public void menuClick(InventoryClickEvent event) {
-		Player player = (Player) event.getWhoClicked();
+		//Player player = (Player) event.getWhoClicked();
 		ItemStack clicked = event.getCurrentItem();
-		int money = player.getMetadata("money").get(0).asInt();
-		Inventory inventory = player.getInventory();
+		//int money = player.getMetadata("money").get(0).asInt();
+		//Inventory inventory = player.getInventory();
 		if (!clicked.getType().equals(Material.AIR)) {
 			if (clicked.getItemMeta().hasDisplayName()) {
 				switch (clicked.getItemMeta().getDisplayName().toString()) {

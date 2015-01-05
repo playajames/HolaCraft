@@ -137,9 +137,12 @@ public class Logger {
 	        	} else {
 	        		plugin.getLogger().info("Logger Scheduler: No logger data to store, task canceled.");
 	        	}
+			} else {
+				plugin.getLogger().warning("Logger Scheduler: Error, could not connect to MySQL database..");
 			}
 		} catch (Exception e) {
-			plugin.getLogger().warning("Logger Scheduler: Error, could not connect to MySQL database..");
+			plugin.getLogger().warning("Logger Scheduler: Error, storing logger cache.");
+			plugin.getLogger().warning(e.getMessage());
 		}
 		try {
 			mysql.closeConnection();
