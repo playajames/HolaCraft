@@ -135,6 +135,7 @@ public class Permissions {
 		permissions.setPermission("holacraft.npc.generaltrader", true);
 		permissions.setPermission("holacraft.command.afk", true);
 		permissions.setPermission("holacraft.command.warp.override", true);
+		permissions.setPermission("holacraft.command.warn", true);
 		// Bukkit Permissions
 		permissions.setPermission("bukkit.command.gamemode", true);
 		permissions.setPermission("bukkit.command.weather", true);
@@ -186,6 +187,9 @@ public class Permissions {
 		permissions.setPermission("holacraft.npc.generaltrader", true);
 		permissions.setPermission("holacraft.command.afk", true);
 		permissions.setPermission("holacraft.command.warp.override", true);
+		permissions.setPermission("holacraft.command.mute", true);
+		permissions.setPermission("holacraft.command.warn", true);
+		
 		// Bukkit Permissions
 		permissions.setPermission("bukkit.command.gamemode", true);
 		permissions.setPermission("bukkit.command.weather", true);
@@ -209,6 +213,9 @@ public class Permissions {
 		permissions.setPermission("holacraft.npc.generaltrader", true);
 		permissions.setPermission("holacraft.command.afk", true);
 		permissions.setPermission("holacraft.command.warp.override", true);
+		permissions.setPermission("holacraft.command.mute", true);
+		permissions.setPermission("holacraft.command.warn", true);
+		
 		// Bukkit Permissions
 		permissions.setPermission("bukkit.command.gamemode", true);
 		permissions.setPermission("bukkit.command.weather", true);
@@ -235,6 +242,9 @@ public class Permissions {
 		permissions.setPermission("holacraft.npc.generaltrader", true);
 		permissions.setPermission("holacraft.command.afk", true);
 		permissions.setPermission("holacraft.command.warp.override", true);
+		permissions.setPermission("holacraft.command.warn", true);
+		permissions.setPermission("holacraft.command.mute", true);
+		
 		// Bukkit Permissions
 		permissions.setPermission("bukkit.command.gamemode", true);
 		permissions.setPermission("bukkit.command.weather", true);
