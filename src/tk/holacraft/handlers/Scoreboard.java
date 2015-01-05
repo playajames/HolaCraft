@@ -44,4 +44,10 @@ public class Scoreboard {
 		player.setScoreboard(board);
 	}
 	
+	public void updateAll() {
+		for (Player player : GlobalData.playersOnline) {
+			updateScoreboard(player);
+		}
+	}
+	
 }

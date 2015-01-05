@@ -32,6 +32,11 @@ public class AsyncPlayerChat implements Listener{
     		player.removeMetadata("afk", plugin);
     		player.sendMessage(GlobalData.styleChatServer + ChatColor.GRAY + "You are no longer AFK.");
     	}
+    	
+    	if (player.hasMetadata("muted")) {
+    		event.setCancelled(true);
+    		player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You dont have permission chat as you are muted.");
+    	}
     }
    
 }

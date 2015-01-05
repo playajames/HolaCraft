@@ -141,7 +141,7 @@ public class Warp implements CommandExecutor {
 						        int y = player.getLocation().getBlockY();
 						        int z = player.getLocation().getBlockZ();
 								if(player.hasPermission("holacraft.command.warp.override")) {
-									player.sendMessage(GlobalData.styleChatServer + "Teleporting you to " + args[0].toLowerCase() + ".");
+									player.sendMessage(GlobalData.styleChatServer + "Teleported you to " + args[0].toLowerCase() + ".");
 							        player.teleport(warps.get(args[0]));
 								} else {
 									player.sendMessage(GlobalData.styleChatServer + "Teleporting you to " + args[0].toLowerCase() + ", dont move for 5 seconds.");

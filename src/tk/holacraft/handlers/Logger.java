@@ -36,6 +36,14 @@ public class Logger {
 		cache.add(query);
 	}
 	
+	public void warned(Player player, Player warner) {
+		String action = "warn";
+		Date d = new Date();
+		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
+		String query = "INSERT INTO logger (`player_id`, `warner`, `action`, `location_x`, `location_y`, `location_z`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + warner.getMetadata("id").get(0).asInt() + "', '" + action + "','" + player.getLocation().getBlockX() + "', '" + player.getLocation().getBlockY() + "', '" + player.getLocation().getBlockZ() + "', '" +  dateNow + "');";
+		cache.add(query);
+	}
+	
 	///// Quit Event
 	public void quit(Player player) {
 		String action = "quit";

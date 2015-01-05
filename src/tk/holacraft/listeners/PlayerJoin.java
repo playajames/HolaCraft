@@ -28,6 +28,7 @@ public class PlayerJoin implements Listener {
 		new Scoreboard(plugin).updateScoreboard(player);
 		new Permissions(plugin).set(player);
 		
+		
 		event.setJoinMessage(GlobalData.styleChatServer + player.getName() + " has joined the server.");
 		
 		///// Check for first time join

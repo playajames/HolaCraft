@@ -2,6 +2,7 @@ package tk.holacraft.commands;
 
 import java.sql.SQLException;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
@@ -12,6 +13,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 
 import tk.holacraft.GlobalData;
 import tk.holacraft.Main;
+import tk.holacraft.handlers.Logger;
 import tk.holacraft.handlers.Permissions;
 import tk.holacraft.handlers.PlayerData;
 
@@ -44,6 +46,58 @@ public class Hola implements CommandExecutor {
 						player.sendMessage(GlobalData.styleChatServer + ChatColor.GREEN + "Inventory cleared.");
 						player.getInventory().clear();
 						break;
+					// Mute command.
+					case "mute":
+						if(args.length == 2) {
+							Player targetPlayer = Bukkit.getServer().getPlayer(args[2]);
+							if(targetPlayer != null) {
+								if(!player.hasMetadata("muted")) {
+									targetPlayer.setMetadata("muted", new FixedMetadataValue(plugin,0));
+									player.sendMessage(GlobalData.styleChatServer + ChatColor.GREEN +  "Muted player " + targetPlayer.getName());
+									for(Player staff : GlobalData.playersOnline) {
+										if (staff.hasPermission("holacraft.command.mute.see")) {
+											staff.sendMessage(GlobalData.styleChatServer + ChatColor.GOLD + player.getName() +  " muted player " + targetPlayer.getName());
+										}
+									}
+								} else {
+									targetPlayer.removeMetadata("muted", plugin);
+									player.sendMessage(GlobalData.styleChatServer + ChatColor.GREEN +  "Unmuted player " + targetPlayer.getName());
+									for(Player staff : GlobalData.playersOnline) {
+										if (staff.hasPermission("holacraft.command.mute.unmute.see")) {
+											staff.sendMessage(GlobalData.styleChatServer + ChatColor.GOLD + player.getName() +  " unmuted player " + targetPlayer.getName());
+										}
+									}
+								}
+							} else {
+								player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "That player is not online.");
+							}
+						} else {
+							player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Invalid usage: /hola mute <player>");
+						}
+						break;
+					// Warn command
+					case "warn":
+						if(args.length >= 2) {
+							Player targetPlayer = Bukkit.getServer().getPlayer(args[2]);
+							if(targetPlayer != null) {
+								new Logger(plugin).warned(targetPlayer, player);
+								int warns = targetPlayer.getMetadata("warns").get(0).asInt();
+								int newWarns = warns + 1;
+								if(warns == 2) {
+									player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Player " + targetPlayer.getName() + " received his third warning and was banned.");
+									targetPlayer.kickPlayer(GlobalData.styleChatServer + ChatColor.RED + "Banned for: You received your third warning, warned by: " + player.getName() + ".");
+									targetPlayer.setBanned(true);
+								} else if (warns == 1) {
+									targetPlayer.setMetadata("warns", new FixedMetadataValue(plugin,newWarns));
+									player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Player " + targetPlayer.getName() + " received his second warning and was kicked.");
+									targetPlayer.kickPlayer(GlobalData.styleChatServer + ChatColor.RED + "Kicked for: You received your second warning, warned by: " + player.getName() + ".");
+								} else if (warns == 0) {
+									targetPlayer.setMetadata("warns", new FixedMetadataValue(plugin,newWarns));
+									player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Player " + targetPlayer.getName() + " received his first warning.");
+									targetPlayer.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You received your first warning, warned by: " + player.getName() + ".");
+								}
+							}
+						}
 					// adventure Command	
 					case "adventure":
 						if(player.getGameMode().equals(GameMode.ADVENTURE)) {
