@@ -3,6 +3,7 @@ package tk.holacraft.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -11,7 +12,7 @@ import tk.holacraft.GlobalData;
 import tk.holacraft.Main;
 import tk.holacraft.handlers.Logger;
 
-public class Warn {
+public class Warn implements CommandExecutor {
 
 	Main plugin;
 	public Warn(Main plugin) {
