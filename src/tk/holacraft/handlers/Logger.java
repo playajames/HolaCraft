@@ -36,11 +36,11 @@ public class Logger {
 		cache.add(values);
 	}
 	
-	public void warned(Player player, Player warner) {
+	public void warned(Player player, Player warner, String reason) {
 		String action = "warn";
 		Date d = new Date();
 		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
-		String query = "INSERT INTO logger (`player_id`, `warner`, `action`, `location_x`, `location_y`, `location_z`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + warner.getMetadata("id").get(0).asInt() + "', '" + action + "','" + player.getLocation().getBlockX() + "', '" + player.getLocation().getBlockY() + "', '" + player.getLocation().getBlockZ() + "', '" +  dateNow + "');";
+		String query = "INSERT INTO logger (`player_id`, `warner`, `action`, `reason`, `location_x`, `location_y`, `location_z`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + warner.getMetadata("id").get(0).asInt() + "', '" + action + "','" + reason + "','" + player.getLocation().getBlockX() + "', '" + player.getLocation().getBlockY() + "', '" + player.getLocation().getBlockZ() + "', '" +  dateNow + "');";
 		cache.add(query);
 	}
 	
@@ -174,5 +174,13 @@ public class Logger {
 			plugin.getLogger().warning("Logger Scheduler: Error, could not close MySQL connection.");
 			e.printStackTrace();
 		}
+	}
+
+	public void muted(Player player, Player muter, String reason) {
+		String action = "mute";
+		Date d = new Date();
+		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
+		String query = "INSERT INTO logger (`player_id`, `muter_id`, `action`, `reason`, `location_x`, `location_y`, `location_z`, `date`) VALUES ('" + player.getMetadata("id").get(0).asInt() + "', '" + muter.getMetadata("id").get(0).asInt() + "', '" + action + "','" + reason + "','" + player.getLocation().getBlockX() + "', '" + player.getLocation().getBlockY() + "', '" + player.getLocation().getBlockZ() + "', '" +  dateNow + "');";
+		cache.add(query);
 	}
 }
