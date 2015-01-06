@@ -45,10 +45,18 @@ public class Home implements CommandExecutor {
 		String homes = player.getMetadata("homes").get(0).asString();
 		String[] parts = homes.split(":");
 		if (player.getMetadata("group_home_limit").get(0).asInt() > parts.length) {
-			player.sendMessage("You ended up here.");
+			for (String part : parts) {
+				String[] parts1 = part.split(",");
+				for (String p : parts1) {
+					if (p.contentEquals(name)) {
+						player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You already have a home named " + p + ".");
+						return;
+					}
+				}
+			}
 			homes = homes + name + "," +new ServerTasks(plugin).sterilizeLoc(player.getLocation()) + ":";
-			System.out.println(parts.length);
 			player.setMetadata("homes", new FixedMetadataValue(plugin,homes));
+			player.sendMessage(GlobalData.styleChatServer + "Home set.");
 		} else {
 			player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You have already reached your homes limit. Use /remhome <home_name> to remove a home.");
 		}
