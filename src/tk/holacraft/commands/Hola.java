@@ -15,6 +15,7 @@ import tk.holacraft.GlobalData;
 import tk.holacraft.Main;
 import tk.holacraft.handlers.Permissions;
 import tk.holacraft.handlers.PlayerData;
+import tk.holacraft.handlers.Scoreboard;
 import tk.holacraft.handlers.ServerTasks;
 
 public class Hola implements CommandExecutor {
@@ -49,6 +50,10 @@ public class Hola implements CommandExecutor {
 					case "ci":
 						player.sendMessage(GlobalData.styleChatServer + ChatColor.GREEN + "Inventory cleared.");
 						player.getInventory().clear();
+						break;
+					// Update command.
+					case "update":
+						new Scoreboard(plugin).updateAll();
 						break;
 					// Mute command.
 					case "mute":
