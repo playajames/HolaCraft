@@ -90,7 +90,7 @@ public class PlayerData {
 				plugin.getLogger().info(player.getDisplayName() + " created data successfully.");
 				new PlayerData(plugin).load(player);
 			} catch (SQLException e) {
-				e.printStackTrace();
+				plugin.getLogger().warning(e.getMessage().toString());;
 				plugin.getLogger().warning(player.getDisplayName() + " created data unsuccessfully.");
 				mysql.closeConnection();
 				return false;
@@ -133,7 +133,7 @@ public class PlayerData {
 					player.setMetadata("infractions", new FixedMetadataValue(       plugin,rsPlayer.getInt("infractions")));
 					player.setMetadata("money", new FixedMetadataValue(             plugin,rsPlayer.getInt("money")));
 					player.setMetadata("points", new FixedMetadataValue(            plugin,rsPlayer.getInt("points")));
-					player.setMetadata("homes", new FixedMetadataValue(             plugin,rsPlayer.getInt("homes")));
+					player.setMetadata("homes", new FixedMetadataValue(             plugin,rsPlayer.getString("homes")));
 					player.setMetadata("kills", new FixedMetadataValue(             plugin,rsPlayer.getInt("kills")));
 					player.setMetadata("monster_kills", new FixedMetadataValue(     plugin,rsPlayer.getInt("monster_kills")));
 					player.setMetadata("deaths", new FixedMetadataValue(            plugin,rsPlayer.getInt("deaths")));

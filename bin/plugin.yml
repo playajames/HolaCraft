@@ -12,3 +12,5 @@ commands:
     desctiption: Teleports player to specified warp location.
   money:
     description: Allows players to control their money.
+  home:
+    description: Allows players to control their money.

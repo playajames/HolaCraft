@@ -105,6 +105,22 @@ public class ServerTasks {
 		}
 		return locations;
 	}
+	
+	public String sterilizeLoc(Location loc) {
+		String str = loc.getWorld().getName() + "," + loc.getBlockX() + "," +loc.getBlockY() + "," + loc.getBlockZ() + "," + loc.getYaw() + "," + loc.getPitch();		
+		return str;
+	}
+	public Location deSterilizeLoc(String str) {
+		String[] parts = str.split(",");
+		World world = plugin.getServer().getWorld(parts[0]);
+		double x = Double.parseDouble(parts[1]);
+		double y = Double.parseDouble(parts[2]);
+		double z = Double.parseDouble(parts[3]);
+		float yaw = Float.parseFloat(parts[4]);
+		float pitch = Float.parseFloat(parts[5]);
+		Location loc = new Location(world, x, y, z, yaw, pitch);
+		return loc;
+	}
 	/////
 	public int getRandomInt(int min, int max) {
 		  return (int) (Math.floor(Math.random() * (max - min)) + min);

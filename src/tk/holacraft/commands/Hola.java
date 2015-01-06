@@ -15,6 +15,7 @@ import tk.holacraft.GlobalData;
 import tk.holacraft.Main;
 import tk.holacraft.handlers.Permissions;
 import tk.holacraft.handlers.PlayerData;
+import tk.holacraft.handlers.ServerTasks;
 
 public class Hola implements CommandExecutor {
 
@@ -31,6 +32,10 @@ public class Hola implements CommandExecutor {
 			if (player.hasPermission("holacraft.command.hola")) {
 				if (args.length > 0) {
 					switch (args[0]) {
+					// Test Command	
+					case "test":
+						player.sendMessage(new ServerTasks(plugin).sterilizeLoc(player.getLocation()));
+						break;
 					// creative Command	
 					case "creative":
 						if(player.getGameMode().equals(GameMode.CREATIVE)) {

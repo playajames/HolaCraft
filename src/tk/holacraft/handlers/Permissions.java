@@ -57,8 +57,10 @@ public class Permissions {
 		}
 		
 		public void remove(Player player) {
-			player.removeAttachment(GlobalData.permissions.get(player.getUniqueId()));
-			GlobalData.permissions.remove(player.getUniqueId());
+			if (GlobalData.permissions.get(player.getUniqueId()) != null) {
+				player.removeAttachment(GlobalData.permissions.get(player.getUniqueId()));
+				GlobalData.permissions.remove(player.getUniqueId());
+			}
 		}
 		
 	///// Guest Permissions
