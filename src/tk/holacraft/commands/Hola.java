@@ -64,6 +64,7 @@ public class Hola implements CommandExecutor {
 					// Update command.
 					case "update":
 						new Scoreboard(plugin).updateAll();
+						player.sendMessage(GlobalData.styleChatServer + "Updated.");
 						break;
 					// Mute command.
 					case "mute":
