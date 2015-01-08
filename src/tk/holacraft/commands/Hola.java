@@ -8,6 +8,7 @@ import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
 
@@ -37,7 +38,7 @@ public class Hola implements CommandExecutor {
 					case "test":
 						player.sendMessage(new ServerTasks(plugin).sterilizeLoc(player.getLocation()));
 						break;
-					// creative Command	
+					// creative Command
 					case "creative":
 						if(player.getGameMode().equals(GameMode.CREATIVE)) {
 							player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You are already in creative mode.");
@@ -45,6 +46,15 @@ public class Hola implements CommandExecutor {
 							player.sendMessage(GlobalData.styleChatServer + ChatColor.GREEN + "Gamemode switched to creative.");
 							player.setGameMode(GameMode.CREATIVE);
 						}
+						break;
+					// Clear command
+					case "clear":
+						int number = 0;
+						for(Entity e : player.getWorld().getEntities()) {
+							e.remove();
+							number = number + 1;
+						}
+						player.sendMessage(GlobalData.styleChatServer + "Entites cleared: " + number + ".e");
 						break;
 					// Clear Inventory
 					case "ci":
