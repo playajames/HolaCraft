@@ -33,6 +33,10 @@ public class PlayerCommandPreprocess implements Listener {
 				event.setCancelled(true);
 				player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Sorry, this command is not allowed.");
 			}
+			if (event.getMessage().startsWith("/stop") && player.hasPermission("bukkit.command.ban.player")) {
+				event.setCancelled(true);
+				player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Sorry, this command is not allowed.");
+			}
 		}
 	}
 }
