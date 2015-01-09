@@ -36,6 +36,14 @@ public class Logger {
 		cache.add(values);
 	}
 	
+	public void hacking(Player player, String type) {
+		String action = "hacking";
+		Date d = new Date();
+		String dateNow = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(d);
+		String values = player.getMetadata("id").get(0).asInt() + "," + action + "," + type + "," + player.getLocation().getBlockX() + "," + player.getLocation().getBlockY() + "," + player.getLocation().getBlockZ() + "," + player.getAddress() + "," + dateNow;
+		cache.add(values);
+	}
+	
 	public void warned(Player player, Player warner, String reason) {
 		String action = "warn";
 		Date d = new Date();
