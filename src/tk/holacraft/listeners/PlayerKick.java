@@ -12,6 +12,7 @@ import tk.holacraft.Main;
 import tk.holacraft.handlers.Logger;
 import tk.holacraft.handlers.Permissions;
 import tk.holacraft.handlers.PlayerData;
+import tk.holacraft.handlers.Scoreboard;
 
 public class PlayerKick implements Listener {
 
@@ -27,6 +28,8 @@ public class PlayerKick implements Listener {
 		GlobalData.playersOnline.remove(player);
 		new Logger(plugin).kick(player, null);
 		new Permissions(plugin).remove(player);
+		new Scoreboard(plugin).updateAll();
+
 		
 		if (plugin.getConfig().getBoolean("MySQL.enabled")) {
 			if (new PlayerData(plugin).store(player)) {

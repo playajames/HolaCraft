@@ -12,6 +12,7 @@ import tk.holacraft.Main;
 import tk.holacraft.handlers.Logger;
 import tk.holacraft.handlers.Permissions;
 import tk.holacraft.handlers.PlayerData;
+import tk.holacraft.handlers.Scoreboard;
 
 public class PlayerQuit implements Listener {
 
@@ -28,6 +29,8 @@ public class PlayerQuit implements Listener {
 		GlobalData.playersOnline.remove(player);
 		new Logger(plugin).quit(player);
 		new Permissions(plugin).remove(player);
+		new Scoreboard(plugin).updateAll();
+
 		event.setQuitMessage(GlobalData.styleChatServer + player.getName() + " has left the server.");
 		if (plugin.getConfig().getBoolean("MySQL.enabled")) {
 			if (new PlayerData(plugin).store(player)) {
