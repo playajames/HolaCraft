@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import tk.holacraft.GlobalData;
 import tk.holacraft.Main;
+import tk.holacraft.handlers.Logger;
 
 public class PlayerMove implements Listener{
 
@@ -23,6 +24,14 @@ public class PlayerMove implements Listener{
 		if(player.hasMetadata("afk")) {
 			player.removeMetadata("afk", plugin);
 			player.sendMessage(GlobalData.styleChatServer + ChatColor.GRAY + "You are no longer AFK.");
+		}
+		if(player.isFlying()) {
+			if(player.getAllowFlight() == false) {
+				for(Player staff : GlobalData.playersOnline) {
+					new Logger(plugin).hacking(player, "Flight");
+					staff.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "Player " + player.getName() + " is hacking (Flight), logged.");
+				}
+			}
 		}
 	}
 }
