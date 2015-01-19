@@ -13,4 +13,8 @@ commands:
   money:
     description: Allows players to control their money.
   home:
-    description: Allows players to control their money.
+    description: Allows players to control their homes.
+  mute:
+    description: Toggle mute players.
+  warn:
+    description: Warns players.

@@ -25,9 +25,8 @@ public class PlayerJoin implements Listener {
 		Player player = event.getPlayer();
 		GlobalData.playersOnline.add(player);
 		new Logger(plugin).join(player);
-		new Scoreboard(plugin).updateAll();
 		new Permissions(plugin).set(player);
-		
+		new Scoreboard(plugin).updateAll();
 		
 		event.setJoinMessage(GlobalData.styleChatServer + player.getName() + " has joined the server.");
 		

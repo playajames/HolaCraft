@@ -1,10 +1,14 @@
 package tk.holacraft.commands;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -14,6 +18,8 @@ import org.bukkit.metadata.FixedMetadataValue;
 
 import tk.holacraft.GlobalData;
 import tk.holacraft.Main;
+import tk.holacraft.MySQL;
+import tk.holacraft.handlers.Logger;
 import tk.holacraft.handlers.Permissions;
 import tk.holacraft.handlers.PlayerData;
 import tk.holacraft.handlers.Scoreboard;
@@ -37,6 +43,43 @@ public class Hola implements CommandExecutor {
 					// Test Command	
 					case "test":
 						player.sendMessage(new ServerTasks(plugin).sterilizeLoc(player.getLocation()));
+						break;
+					// creative Command
+					case "greifcheck":
+						if(player.hasPermission("holacraft.command.hola.greifcheck")) {
+							final MySQL mysql = new MySQL(plugin, GlobalData.HOST, GlobalData.PORT, GlobalData.DATABASE, GlobalData.USER, GlobalData.PASS);
+							Connection c = null;
+							try {
+								c= mysql.openConnection();
+							} catch (Exception e) {
+								e.printStackTrace();
+								return false;
+							}
+							try {
+								if (mysql.checkConnection()) {
+									new Logger(plugin).store();
+									Statement s = c.createStatement();
+									Location loc = player.getTargetBlock(null, 100).getLocation();
+									String query = "SELECT * FROM logger WHERE location_x = " + loc.getBlockX() + " AND location_y = " + loc.getBlockY() + " AND location_z = " + loc.getBlockZ() + ";";
+									ResultSet rs = s.executeQuery(query);
+									//System.out.println(query);
+									if (rs.next()) {
+										while (rs.next()) {
+											player.sendMessage(GlobalData.styleChatServer + "There was a " + rs.getString("action") + " action performed here by " + rs.getString("player_id") + " at " + rs.getString("date") + " with a data value of " + rs.getString("data") + ".");
+										}
+										s.close();
+									} else {
+										player.sendMessage(GlobalData.styleChatServer + "There is no information for this location.");
+									}
+								}
+								mysql.closeConnection();
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						} else {
+							player.sendMessage(GlobalData.styleChatServer + ChatColor.RED + "You dont have permission to do that.");
+						}
 						break;
 					// creative Command
 					case "creative":

@@ -9,9 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import tk.holacraft.commands.Hola;
 import tk.holacraft.commands.Home;
-import tk.holacraft.commands.Mute;
 import tk.holacraft.commands.Spawn;
-import tk.holacraft.commands.Warn;
 import tk.holacraft.commands.Warp;
 import tk.holacraft.handlers.BlockProtect;
 import tk.holacraft.handlers.Logger;
@@ -129,9 +127,9 @@ public class Main extends JavaPlugin {
 			this.getCommand("spawn").setExecutor(new Spawn(this));
 			this.getCommand("warp").setExecutor(new Warp(this));
 			this.getCommand("home").setExecutor(new Home(this));
-			this.getCommand("warn").setExecutor(new Warn(this));
-			this.getCommand("mute").setExecutor(new Mute(this));
-
+			///// *** Causing errors needs revision *** 
+			//this.getCommand("warn").setExecutor(new Warn(this));
+			//this.getCommand("mute").setExecutor(new Mute(this));
 			
 			///// Register Events
 			getServer().getPluginManager().registerEvents(new AsyncPlayerChat(this), this);

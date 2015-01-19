@@ -19,11 +19,10 @@ public class Scoreboard {
 		this.plugin = plugin;
 	}
 	
-	ScoreboardManager manager = Bukkit.getScoreboardManager();
-	org.bukkit.scoreboard.Scoreboard board = manager.getNewScoreboard();
-	
 	public void updateScoreboard(Player player) {
-		Objective title = board.registerNewObjective("title", "dummy");
+		ScoreboardManager manager = Bukkit.getScoreboardManager();
+		org.bukkit.scoreboard.Scoreboard board = manager.getNewScoreboard();
+		Objective title = board.registerNewObjective(player.getName(), "dummy");
 		title.setDisplaySlot(DisplaySlot.SIDEBAR);
 		title.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "HolaCraft");
 		
@@ -37,7 +36,6 @@ public class Scoreboard {
 		infractions.setScore(player.getMetadata("infractions").get(0).asInt());
 		
 		Score players = title.getScore("Players Online:");
-		
 		players.setScore(GlobalData.playersOnline.size());
 		
 		

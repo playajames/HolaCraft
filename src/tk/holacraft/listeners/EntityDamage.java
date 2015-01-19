@@ -23,6 +23,11 @@ public class EntityDamage implements Listener{
 		if (entity instanceof Player) {
 			Player player = (Player)entity;
 			
+			//if (event.getEntity() instanceof Player) {
+			//	Player targetPlayer = (Player) event.getEntity();
+				
+			//}
+			
 			if (new WorldGuard(plugin).inRegion(player.getLocation())) {
 				event.setCancelled(true);
 			}

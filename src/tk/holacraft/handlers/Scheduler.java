@@ -67,7 +67,7 @@ public class Scheduler {
 	        		server.broadcastMessage(GlobalData.styleChatServer + "This server is in beta. If you discover any bugs or glitches please report them to a staff member.");
 	        		break;
 	        	case 2:
-	        		server.broadcastMessage(GlobalData.styleChatServer + "Need some help getting acquainted with the server? Check out http://www.holacraft.tk/wiki.");
+	        		server.broadcastMessage(GlobalData.styleChatServer + "Check out our website at http://www.holacraft.tk/!");
 	        		break;
 	        	case 3:
 	        		server.broadcastMessage(GlobalData.styleChatServer + "Enjoy your stay. :D");
@@ -76,7 +76,7 @@ public class Scheduler {
 	        		server.broadcastMessage(GlobalData.styleChatServer + "Be friendly, helpful, and respectful to fellow players.");
 	        		break;
 	        	case 5:
-	        		server.broadcastMessage(GlobalData.styleChatServer + "We are not currently recruiting staff members, please don't ask.");
+	        		server.broadcastMessage(GlobalData.styleChatServer + "We are a new server with many more features coming soon!");
 	        		break;
 	        	}
 	        }
