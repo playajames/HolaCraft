@@ -19,6 +19,7 @@ import tk.holacraft.handlers.WorldGuard;
 import tk.holacraft.handlers.items.Items;
 import tk.holacraft.listeners.AsyncPlayerChat;
 import tk.holacraft.listeners.EntityDamage;
+import tk.holacraft.listeners.EntityDamageByEntity;
 import tk.holacraft.listeners.InventoryClick;
 import tk.holacraft.listeners.ItemSpawn;
 import tk.holacraft.listeners.PlayerBreakBlock;
@@ -134,6 +135,7 @@ public class Main extends JavaPlugin {
 			///// Register Events
 			getServer().getPluginManager().registerEvents(new AsyncPlayerChat(this), this);
 			getServer().getPluginManager().registerEvents(new EntityDamage(this), this);
+			getServer().getPluginManager().registerEvents(new EntityDamageByEntity(this), this);
 			getServer().getPluginManager().registerEvents(new InventoryClick(this), this);
 			getServer().getPluginManager().registerEvents(new ItemSpawn(), this);
 			getServer().getPluginManager().registerEvents(new PlayerInteract(this), this);
